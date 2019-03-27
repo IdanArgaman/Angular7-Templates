@@ -1,0 +1,36 @@
+<!--
+  Inside the ng-template tag body, we have access to the same context variables that are visible in the outer template, such as for example the variable lessons.
+
+  And this is because all ng-template instances have access also to the same context on which they are embedded.
+
+  But each template can also define its own set of input variables! Actually, each template has associated a context object containing all the template-specific input variables.
+-->
+
+<ng-template #estimateTemplate let-lessonsCounter="estimate">
+	<div>Content from outside: {{ appName }}</div>
+	<div> Approximately {{lessonsCounter}} lessons ...</div>
+</ng-template>
+
+<!-- In order to avoid having to create that extra div, we can instead use ng-container directive -->
+
+<!-- We can also take the template itself and instantiate it anywhere on the page, using the ngTemplateOutlet directive -->
+<ng-container *ngTemplateOutlet="estimateTemplate;context:ctx">
+</ng-container>
+
+
+<!-- ######################################### -->
+<!-- Passing template as input to support render proprs -->
+<h2>Tabs Example</h2>
+
+<ng-template #customTabButtons>
+	<div class="custom-class">
+		<button class="tab-button" (click)="login()">
+          Hi
+        </button>
+        <button class="tab-button" (click)="signUp()">
+          Bye
+        </button>
+    </div>
+</ng-template>
+
+<app-tabs [headerTemplate]="customTabButtons"></app-tabs>
