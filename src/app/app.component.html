@@ -1,9 +1,14 @@
 <!--
-  Inside the ng-template tag body, we have access to the same context variables that are visible in the outer template, such as for example the variable lessons.
+  More on "*ngTemplateOutlet" at the official docs: https://angular.io/api/common/NgTemplateOutlet
+  One should notice the use of $implicit there!
+  
+  Inside the ng-template tag body, we have access to the same context variables that are visible in the outer template, 
+  such as for example the variable lessons.
 
   And this is because all ng-template instances have access also to the same context on which they are embedded.
 
-  But each template can also define its own set of input variables! Actually, each template has associated a context object containing all the template-specific input variables.
+  But each template can also define its own set of input variables! Actually, each template has associated a context 
+  object containing all the template-specific input variables.
 -->
 
 <ng-template #estimateTemplate let-lessonsCounter="estimate">
